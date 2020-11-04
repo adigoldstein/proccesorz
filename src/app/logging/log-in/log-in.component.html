@@ -1,0 +1,44 @@
+<img class="logo" src="./assets/images/placeholder.com-logo4.jpg" alt="Logo">
+
+<form #Form="ngForm" (ngSubmit)="onLogin()">
+
+<!--<span class="p-float-label">-->
+<!--    <input id="username" name="username" type="text" pInputText [(ngModel)]="username" minlength="3">-->
+<!--    <label for="username">Username</label>-->
+<!--</span>-->
+  <span class="p-float-label">
+    <input id="username"
+           pInputText
+           type="username"
+           [(ngModel)]="username"
+           name="username"
+           #usernameInput="ngModel"
+           minlength="3" required/>
+    <label for="username">Username</label>
+  <small *ngIf="usernameInput.invalid  && (usernameInput.dirty || usernameInput.touched)" id="username-help" class="p-invalid">
+    Username is required, min 3 chars.
+  </small>
+  </span>
+
+
+
+  <span class="p-float-label">
+    <input name="password"
+           id="password"
+           type="text"
+           pInputText
+           [(ngModel)]="password"
+           #passwordInput='ngModel'
+           minlength="5" required>
+    <label for="password">Password</label>
+    <small *ngIf="passwordInput.invalid  && (passwordInput.dirty || passwordInput.touched)" id="username-help1" class="p-invalid">
+    Username is required, min 3 chars.
+  </small>
+</span>
+
+  <button pButton label="Submit" type="submit" class="btn btn-success" [disabled]="Form.invalid" ></button>
+</form>
+<div class="link-container">
+  <a class="to-sign-up" [routerLink]="['/sign-up']">Got no account? No worries! Come join us!</a>
+</div>
+

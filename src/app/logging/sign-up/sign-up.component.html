@@ -1,0 +1,36 @@
+<img class="logo" src="./assets/images/placeholder.com-logo4.jpg" alt="Logo">
+<form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+  <span class="p-float-label">
+    <input id="name" formControlName="name" type="text" pInputText>
+    <label for="name">Username</label>
+     <small *ngIf="f.name.errors" id="username-help1" class="p-invalid">
+    Username is required, min 3 chars.
+  </small>
+  </span>
+
+  <span class="p-float-label">
+    <input id="email" formControlName="email" type="text" pInputText>
+    <label for="email">Email</label>
+         <small *ngIf="f.email.errors" id="username-help2" class="p-invalid">
+    Email is required, usual format.
+  </small>
+  </span>
+
+  <span class="p-float-label">
+    <input id="password" formControlName="password" type="password" pInputText>
+    <label for="password">Password</label>
+        <label for="email">Email</label>
+         <small *ngIf="f.password.errors" id="username-help3" class="p-invalid">
+    Password is required, min 5 chars.
+  </small>
+  </span>
+
+  <span class="p-float-label">
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" pInputText>
+    <label for="confirmPassword">Confirm Password</label>
+    <small *ngIf="signupForm.getError('passwordMismatch')" id="username-help4" class="p-invalid">
+    Passwords mismatch!
+  </small>
+  </span>
+  <button pButton label="Submit" type="submit" class="btn btn-success" [disabled]="signupForm.invalid"></button>
+</form>
