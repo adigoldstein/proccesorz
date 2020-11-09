@@ -8,11 +8,14 @@ const routes: Routes = [
     path: 'log-in',
     component: LogInComponent,
     loadChildren: () => import('./logging/logging.module').then(m => m.LoggingModule)
-  },  {
+  },
+  {
     path: 'sign-up',
     component: SignUpComponent,
     loadChildren: () => import('./logging/logging.module').then(m => m.LoggingModule)
   },
+  {path: 'flows', loadChildren: () => import('./flows/flows.module').then(m => m.FlowsModule)},
+  {path: 'proccesors', loadChildren: () => import('./proccesors/proccesors.module').then(m => m.ProccesorsModule)},
 
 ];
 

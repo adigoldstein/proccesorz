@@ -8,11 +8,14 @@ import { SharedModule as PrimeShared} from 'primeng/api';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {MegaMenuModule} from 'primeng/megamenu';
+import {TableModule} from 'primeng/table';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, SidebarComponent],
   imports: [
     CommonModule,
     MenubarModule,
@@ -21,9 +24,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ButtonModule,
     InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MegaMenuModule,
+    TableModule
   ],
   exports: [
+    // Modules:
     NgxGraphModule,
     MenubarModule,
     PrimeShared,
@@ -31,7 +37,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
-    HeaderComponent
+    MegaMenuModule,
+    TableModule,
+
+    // Components:
+    HeaderComponent,
+    SidebarComponent,
   ]
 })
 export class SharedModule {

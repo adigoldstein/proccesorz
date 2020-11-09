@@ -1,0 +1,33 @@
+[
+  {
+    "name":"Test flow 1",
+    "id":1212121,
+    "next":[
+      {"name":"step1","next":["step2"]},
+      {"name":"step2","next":["step3","step4","step5"]},
+      {"name":"step3","next":["step5"]},
+      {"name":"step4","next":["step5"]},
+      {"name":"step5"}
+    ]
+  },
+  {
+    "name":"Test flow 2",
+    "id":1212122,
+    "next":[
+      {"name":"step1","next":["step2"]},
+      {"name":"step2","next":["step3","step5"]},
+      {"name":"step3","next":["step5"]},
+      {"name":"step5","next":["step7"]},
+      {"name":"step7"}
+    ]
+  },
+  {
+    "name":"Test flow 3",
+    "id":12121233,
+    "next":[
+      {"name":"step1","next":["step2"]},
+      {"name":"step2","next":["step3"]},
+      {"name":"step3"}
+    ]
+  }
+]

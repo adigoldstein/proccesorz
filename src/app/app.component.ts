@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Route, Router} from '@angular/router';
 
 
 @Component({
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'proccesorz';
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+
+  }
+  showSidebar(): boolean {
+    const url = this.router.url;
+    return !(url === '/sign-up' || url === '/log-in');
+  }
 }
