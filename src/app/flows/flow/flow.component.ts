@@ -36,6 +36,7 @@ export class FlowComponent implements OnInit {
     // this.nodes = this.selectedFlow.steps.map(step => ({id: step.name, label: step.name}));
     for (const step of this.selectedFlow.steps) {
       this.nodes.push({id: step.name, label: step.name});
+      console.log(step.next);
       for (const next of step.next) {
         const linkObject: Edge = {
           id: `${step.name}-to-${next}`,

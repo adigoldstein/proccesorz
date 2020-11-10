@@ -7,7 +7,7 @@
       {"name":"step2","next":["step3","step4","step5"]},
       {"name":"step3","next":["step5"]},
       {"name":"step4","next":["step5"]},
-      {"name":"step5"}
+      {"name":"step5", "next": []}
     ]
   },
   {
@@ -18,7 +18,7 @@
       {"name":"step2","next":["step3","step5"]},
       {"name":"step3","next":["step5"]},
       {"name":"step5","next":["step7"]},
-      {"name":"step7"}
+      {"name":"step7", "next": []}
     ]
   },
   {
@@ -27,7 +27,7 @@
     "steps":[
       {"name":"step1","next":["step2"]},
       {"name":"step2","next":["step3"]},
-      {"name":"step3"}
+      {"name":"step3", "next": []}
     ]
   }
 ]

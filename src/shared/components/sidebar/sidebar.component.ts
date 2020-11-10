@@ -9,11 +9,12 @@ import {FlowsService} from '../../services/flows.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private flowsService:FlowsService) {
+  constructor(private flowsService: FlowsService) {
   }
 
   items: MegaMenuItem[];
-  flows: any[]
+  flows: any[];
+  flowsToDisplay: { label: string, routerLink?: any }[] = [];
 
 
   ngOnInit(): void {
@@ -21,76 +22,78 @@ export class SidebarComponent implements OnInit {
 
     this.flowsService.getFlows$().subscribe(data => {
       this.flows = data;
-
+      if (data) {
+        this.flowsToDisplay = this.flows.map(f => ({label: f.name, routerLink: [`/flows/${f.id}`]}));
+        this.items = [
+          {
+            label: 'Flows', icon: 'pi pi-fw pi-sitemap',
+            items: [
+              [
+                {
+                  label: 'Flows-list',
+                  items: [{label: 'Go to flows-list', routerLink: ['flows']}]
+                },
+                {
+                  label: 'My flows',
+                  items: this.flowsToDisplay
+                }
+              ],
+            ]
+          },
+          // {
+          //   label: 'Processors', icon: 'pi pi-fw pi-sliders-v',
+          //   items: [
+          //     [
+          //       {
+          //         label: 'Processors-list',
+          //         items: [{label: 'Go to flows-list', routerLink: ['processors']}]
+          //       },
+          //       {
+          //         label: 'My Processors',
+          //         items: [{label: 'test 1', routerLink: ['link-here']}, {label: 'test 2'}, {label: 'test 3'}]
+          //       }
+          //     ],
+          //   ]
+          // },
+          {
+            label: 'Users', icon: 'pi pi-fw pi-users',
+            items: [
+              [
+                {
+                  label: 'User 1',
+                  items: [{label: 'User 1.1'}, {label: 'User 1.2'}]
+                },
+                {
+                  label: 'User 2',
+                  items: [{label: 'User 2.1'}, {label: 'User 2.2'}]
+                },
+              ],
+              [
+                {
+                  label: 'User 3',
+                  items: [{label: 'User 3.1'}, {label: 'User 3.2'}]
+                },
+                {
+                  label: 'User 4',
+                  items: [{label: 'User 4.1'}, {label: 'User 4.2'}]
+                }
+              ],
+              [
+                {
+                  label: 'User 5',
+                  items: [{label: 'User 5.1'}, {label: 'User 5.2'}]
+                },
+                {
+                  label: 'User 6',
+                  items: [{label: 'User 6.1'}, {label: 'User 6.2'}]
+                }
+              ]
+            ]
+          }
+        ];
+      }
     });
 
-    this.items = [
-      {
-        label: 'Flows', icon: 'pi pi-fw pi-sitemap',
-        items: [
-          [
-            {
-              label: 'Flows-list',
-              items: [{label: 'Go to flows-list', routerLink: ['flows']}]
-            },
-            {
-              label: 'My flows',
-              items: [{label: 'Flow 1', routerLink:['link-here']}, {label: 'Flow 2'}, {label: 'Flow 3'}]
-            }
-          ],
-        ]
-      },
-      {
-        label: 'Processors', icon: 'pi pi-fw pi-sliders-v',
-        items: [
-          [
-            {
-              label: 'Processors-list',
-              items: [{label: 'Go to flows-list', routerLink: ['processors']}]
-            },
-            {
-              label: 'My flows',
-              items: [{label: 'Flow 1', routerLink:['link-here']}, {label: 'Flow 2'}, {label: 'Flow 3'}]
-            }
-          ],
-        ]
-      },
-      {
-        label: 'Users', icon: 'pi pi-fw pi-users',
-        items: [
-          [
-            {
-              label: 'User 1',
-              items: [{label: 'User 1.1'}, {label: 'User 1.2'}]
-            },
-            {
-              label: 'User 2',
-              items: [{label: 'User 2.1'}, {label: 'User 2.2'}]
-            },
-          ],
-          [
-            {
-              label: 'User 3',
-              items: [{label: 'User 3.1'}, {label: 'User 3.2'}]
-            },
-            {
-              label: 'User 4',
-              items: [{label: 'User 4.1'}, {label: 'User 4.2'}]
-            }
-          ],
-          [
-            {
-              label: 'User 5',
-              items: [{label: 'User 5.1'}, {label: 'User 5.2'}]
-            },
-            {
-              label: 'User 6',
-              items: [{label: 'User 6.1'}, {label: 'User 6.2'}]
-            }
-          ]
-        ]
-      }
-    ];
   }
 
 }

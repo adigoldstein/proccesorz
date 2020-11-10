@@ -19,9 +19,7 @@ export class FlowsService {
   setFlows(): any {
     this.http.get('assets/flows.json').subscribe(data => {
       this.flows.next(data);
-
     });
-
   }
 
   getFlows$(): any {
