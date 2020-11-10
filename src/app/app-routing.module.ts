@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./logging/logging.module').then(m => m.LoggingModule)
   },
   {path: 'flows', loadChildren: () => import('./flows/flows.module').then(m => m.FlowsModule)},
-  {path: 'proccesors', loadChildren: () => import('./proccesors/proccesors.module').then(m => m.ProccesorsModule)},
+  {path: 'processors', loadChildren: () => import('./processors/processors.module').then(m => m.ProcessorsModule)},
 
 ];
 

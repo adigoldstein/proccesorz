@@ -1,6 +1,9 @@
 <app-header></app-header>
 <main>
   <app-sidebar *ngIf="showSidebar()"></app-sidebar>
-  <router-outlet></router-outlet>
+  <section class="main-view">
+    <p-breadcrumb [model]="items"></p-breadcrumb>
+    <router-outlet></router-outlet>
+  </section>
 </main>
 

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MegaMenuItem, MenuItem} from 'primeng/api';
+import {FlowsService} from '../../services/flows.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +9,21 @@ import {MegaMenuItem, MenuItem} from 'primeng/api';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() {
+  constructor(private flowsService:FlowsService) {
   }
 
   items: MegaMenuItem[];
+  flows: any[]
 
 
   ngOnInit(): void {
+    this.flowsService.setFlows(); // Get data and store it on service for the entire app
+
+    this.flowsService.getFlows$().subscribe(data => {
+      this.flows = data;
+
+    });
+
     this.items = [
       {
         label: 'Flows', icon: 'pi pi-fw pi-sitemap',
@@ -22,7 +31,22 @@ export class SidebarComponent implements OnInit {
           [
             {
               label: 'Flows-list',
-              items: [{label: 'Go to flows-list', routerLink: ['flows/flows-list']}]
+              items: [{label: 'Go to flows-list', routerLink: ['flows']}]
+            },
+            {
+              label: 'My flows',
+              items: [{label: 'Flow 1', routerLink:['link-here']}, {label: 'Flow 2'}, {label: 'Flow 3'}]
+            }
+          ],
+        ]
+      },
+      {
+        label: 'Processors', icon: 'pi pi-fw pi-sliders-v',
+        items: [
+          [
+            {
+              label: 'Processors-list',
+              items: [{label: 'Go to flows-list', routerLink: ['processors']}]
             },
             {
               label: 'My flows',
@@ -62,32 +86,6 @@ export class SidebarComponent implements OnInit {
             {
               label: 'User 6',
               items: [{label: 'User 6.1'}, {label: 'User 6.2'}]
-            }
-          ]
-        ]
-      },
-
-      {
-        label: 'Settings', icon: 'pi pi-fw pi-cog',
-        items: [
-          [
-            {
-              label: 'Setting 1',
-              items: [{label: 'Setting 1.1'}, {label: 'Setting 1.2'}]
-            },
-            {
-              label: 'Setting 2',
-              items: [{label: 'Setting 2.1'}, {label: 'Setting 2.2'}]
-            },
-            {
-              label: 'Setting 3',
-              items: [{label: 'Setting 3.1'}, {label: 'Setting 3.2'}]
-            }
-          ],
-          [
-            {
-              label: 'Technology 4',
-              items: [{label: 'Setting 4.1'}, {label: 'Setting 4.2'}]
             }
           ]
         ]

@@ -15,8 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'flows-list',
-        component: FlowsListComponent,
-      },
+        component: FlowsListComponent},
       {
         path: ':id',
         component: FlowComponent,

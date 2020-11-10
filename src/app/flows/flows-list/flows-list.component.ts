@@ -10,31 +10,29 @@ import {ActivatedRoute, Router,} from '@angular/router';
 export class FlowsListComponent implements OnInit {
 
   constructor(private flowsService: FlowsService,
-              private router: Router,
-              private route: ActivatedRoute
-  ) {
+              private router: Router) {
   }
 
   flows: any[];
+  loading: boolean;
 
   ngOnInit(): void {
+    this.loading = true;
     this.getData();
+
   }
 
   getData(): void {
-    // TODO: get it from the server
-    console.log('get data');
-    this.flowsService.getFlows()
-      .subscribe(data => {
-        console.log(data);
-        this.flows = data;
-      });
+    this.flowsService.getFlows$().subscribe(data => {
+      this.flows = data;
+      if (data) {
+        this.loading = false;
+      }
+    });
   }
 
 
-  onRowClick(flow) {
-    console.log(flow);
-    this.router.navigate(['flows',flow.id], );
-
+  onRowClick(flow): void {
+    this.router.navigate(['flows', flow.id]);
   }
 }

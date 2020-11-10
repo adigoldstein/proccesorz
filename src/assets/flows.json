@@ -1,8 +1,8 @@
 [
   {
     "name":"Test flow 1",
-    "id":1212121,
-    "next":[
+    "id":"1212121",
+    "steps":[
       {"name":"step1","next":["step2"]},
       {"name":"step2","next":["step3","step4","step5"]},
       {"name":"step3","next":["step5"]},
@@ -12,8 +12,8 @@
   },
   {
     "name":"Test flow 2",
-    "id":1212122,
-    "next":[
+    "id":"1212122",
+    "steps":[
       {"name":"step1","next":["step2"]},
       {"name":"step2","next":["step3","step5"]},
       {"name":"step3","next":["step5"]},
@@ -23,8 +23,8 @@
   },
   {
     "name":"Test flow 3",
-    "id":12121233,
-    "next":[
+    "id":"12121233",
+    "steps":[
       {"name":"step1","next":["step2"]},
       {"name":"step2","next":["step3"]},
       {"name":"step3"}

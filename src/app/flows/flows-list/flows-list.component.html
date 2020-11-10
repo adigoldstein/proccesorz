@@ -1,18 +1,29 @@
-<h3>Flows list</h3>
+<h3 appPageHeader>Flows list</h3>
 
-<p-table [value]="flows">
-  <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-      <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
-      <th pSortableColumn="next.length">Steps count <p-sortIcon field="Steps count"></p-sortIcon></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-flow >
-    <tr (click)="onRowClick(flow)">
-      <td>{{flow.name}}</td>
-      <td>{{flow.id}}</td>
-      <td>{{flow.next.length}}</td>
-    </tr>
-  </ng-template>
-</p-table>
+
+<app-spinning-loader *ngIf="loading else view"></app-spinning-loader>
+<ng-template #view>
+  <span *ngIf="flows.length === 0">No flows yet</span>
+  <p-table *ngIf="flows.length" [value]="flows">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Name
+          <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="id">ID
+          <p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th pSortableColumn="steps.length">Steps count
+          <p-sortIcon field="Steps count"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-flow>
+      <tr (click)="onRowClick(flow)">
+        <td>{{flow.name}}</td>
+        <td>{{flow.id}}</td>
+        <td>{{flow.steps.length}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-template>
